@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import {BrowserRouter, Link, Route, Switch} from 'react-router-dom'
-import Init from "./Init";
 import Us from "./Us";
 import ErrorPage from "./ErrorPage";
 import  productData from '../components/data/productData'
+import Products from "./Products";
 
 class Router extends Component{
 
@@ -22,7 +22,11 @@ class Router extends Component{
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route exact path="/" component={Init}/>
+                    <Route exact path="/" render={() => (
+                        <Products
+                            products={this.state.products}
+                        />
+                    )}/>
                     <Route exact path="/us" component={Us}/>
                     <Route component={ErrorPage}/>
                 </Switch>

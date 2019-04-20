@@ -8,7 +8,6 @@ class Products extends Component {
             <div className="productos">
                 <h2>Nuestros productos</h2>
                 <ul className="lista-productos">
-
                 </ul>
             </div>
         );

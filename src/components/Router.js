@@ -5,6 +5,7 @@ import ErrorPage from "./ErrorPage";
 import  productData from '../components/data/productData'
 import Products from "./Products";
 import Header from "./Header";
+import ProductDetail from "./ProductDetail";
 
 class Router extends Component{
 
@@ -29,6 +30,14 @@ class Router extends Component{
                             products={this.state.products}
                         />
                     )}/>
+                    <Route exact path="/product/:productId" render={(props) => {
+                        let productId = props.location.pathname.replace('/product/', '');
+                        return (
+                            <ProductDetail
+                                productDetail={this.state.products[productId]}
+                            />
+                        )
+                    }}/>
                     <Route exact path="/us" component={Us}/>
                     <Route component={ErrorPage}/>
                 </Switch>

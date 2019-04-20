@@ -3,8 +3,21 @@ import {BrowserRouter, Link, Route, Switch} from 'react-router-dom'
 import Init from "./Init";
 import Us from "./Us";
 import ErrorPage from "./ErrorPage";
+import  productData from '../components/data/productData'
 
 class Router extends Component{
+
+    state = {
+        products: []
+    };
+
+    componentWillMount() {
+        this.setState({
+            products: productData
+        })
+    }
+
+
     render() {
         return (
             <BrowserRouter>

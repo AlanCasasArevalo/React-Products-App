@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Product from "./Product";
+import PropTypes from "prop-types";
 
 class Products extends Component {
     state = {}
@@ -21,5 +22,9 @@ class Products extends Component {
         );
     }
 }
+
+Products.propTypes = {
+    products: PropTypes.array.isRequired
+};
 
 export default Products;

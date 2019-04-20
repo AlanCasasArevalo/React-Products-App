@@ -4,6 +4,7 @@ import Us from "./Us";
 import ErrorPage from "./ErrorPage";
 import  productData from '../components/data/productData'
 import Products from "./Products";
+import Header from "./Header";
 
 class Router extends Component{
 
@@ -21,6 +22,7 @@ class Router extends Component{
     render() {
         return (
             <BrowserRouter>
+                <Header/>
                 <Switch>
                     <Route exact path="/" render={() => (
                         <Products

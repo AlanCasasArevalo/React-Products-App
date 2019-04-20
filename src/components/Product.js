@@ -1,15 +1,24 @@
 import React, {Component} from 'react'
+import ProductStyle from './ProductStyle.css'
+import PropTypes from "prop-types";
+import Products from "./Products";
 
 class Product extends Component{
     render() {
-        const product = this.props.product;
-        console.log("producto", product);
+        const {id, nombre, precio, imagen, descripcion} = this.props.product;
+
         return (
-            <div>
-                <h1>Desde product</h1>
-            </div>
+            <li>
+                <img src={`img/${imagen}.png`} alt={nombre}/>
+                <p>{nombre} <span> $ {precio}</span></p>
+                <a href="#"> Mas info </a>
+            </li>
         );
     }
 }
+
+Product.propTypes = {
+    product: PropTypes.object.isRequired
+};
 
 export default Product;

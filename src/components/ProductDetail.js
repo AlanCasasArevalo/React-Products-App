@@ -6,7 +6,7 @@ class ProductDetail extends Component{
     render() {
         const {id, nombre, precio, imagen, descripcion} = this.props.productDetail;
 
-        if (!id) return null;
+        if (!nombre) return null;
 
         return (
             <div className="info-producto">

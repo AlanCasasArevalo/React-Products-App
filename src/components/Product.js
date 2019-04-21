@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ProductStyle from './ProductStyle.css'
 import PropTypes from "prop-types";
-import Products from "./Products";
+import {Link} from 'react-router-dom'
 
 class Product extends Component{
     render() {
@@ -11,7 +11,9 @@ class Product extends Component{
             <li>
                 <img src={`img/${imagen}.png`} alt={nombre}/>
                 <p>{nombre} <span> $ {precio}</span></p>
-                <a href="#"> Mas info </a>
+                <Link to={`/product/${id}`}>
+                    Mas info
+                </Link>
             </li>
         );
     }

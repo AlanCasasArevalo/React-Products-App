@@ -12,7 +12,8 @@ import Contact from "./Contact/Contact";
 class Router extends Component {
 
     state = {
-        products: []
+        products: [],
+        valueSearched: ''
     };
 
     componentWillMount() {
@@ -21,8 +22,32 @@ class Router extends Component {
         })
     }
 
+    getDataFromForm = valueSearched => {
+        if (valueSearched.length > 3) {
+            this.setState({
+                valueSearched
+            })
+        } else {
+            this.setState({
+                valueSearched: ''
+            })
+        }
+    };
 
     render() {
+
+        let products = [...this.state.products];
+        let valueSearched = this.state.valueSearched;
+        let result = {};
+
+        if (valueSearched !== '') {
+            result = products.filter( product => (
+                product.nombre.toLowerCase().indexOf( valueSearched.toLowerCase() ) !== -1
+            ))
+        } else {
+            result = products
+        }
+
         return (
             <BrowserRouter>
                 <Header/>
@@ -30,7 +55,8 @@ class Router extends Component {
                 <Switch>
                     <Route exact path="/" render={() => (
                         <Products
-                            products={this.state.products}
+                            products={result}
+                            getDataFromForm={this.getDataFromForm}
                         />
                     )}/>
                     <Route exact path="/products/:productId" render={(props) => {
@@ -44,7 +70,8 @@ class Router extends Component {
                     <Route exact path="/us" component={Us}/>
                     <Route exact path="/products" render={() => (
                         <Products
-                            products={this.state.products}
+                            products={result}
+                            getDataFromForm={this.getDataFromForm}
                         />
                     )}/>
                     <Route exact path="/contact" component={Contact}/>

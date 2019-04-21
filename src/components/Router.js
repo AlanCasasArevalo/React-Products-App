@@ -2,12 +2,14 @@ import React, {Component} from 'react'
 import {BrowserRouter, Link, Route, Switch} from 'react-router-dom'
 import Us from "./Us";
 import ErrorPage from "./ErrorPage";
-import  productData from '../components/data/productData'
+import productData from '../components/data/productData'
 import Products from "./Products";
 import Header from "./Header";
 import ProductDetail from "./ProductDetail";
+import Navigation from "./Navigation";
+import Contact from "./Contact";
 
-class Router extends Component{
+class Router extends Component {
 
     state = {
         products: []
@@ -24,14 +26,15 @@ class Router extends Component{
         return (
             <BrowserRouter>
                 <Header/>
+                <Navigation/>
                 <Switch>
                     <Route exact path="/" render={() => (
                         <Products
                             products={this.state.products}
                         />
                     )}/>
-                    <Route exact path="/product/:productId" render={(props) => {
-                        let productId = props.location.pathname.replace('/product/', '');
+                    <Route exact path="/products/:productId" render={(props) => {
+                        let productId = props.location.pathname.replace('/products/', '');
                         return (
                             <ProductDetail
                                 productDetail={this.state.products[productId]}
@@ -39,6 +42,12 @@ class Router extends Component{
                         )
                     }}/>
                     <Route exact path="/us" component={Us}/>
+                    <Route exact path="/products" render={() => (
+                        <Products
+                            products={this.state.products}
+                        />
+                    )}/>
+                    <Route exact path="/contact" component={Contact}/>
                     <Route component={ErrorPage}/>
                 </Switch>
             </BrowserRouter>

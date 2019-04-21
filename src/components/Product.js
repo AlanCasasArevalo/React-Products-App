@@ -11,7 +11,7 @@ class Product extends Component{
             <li>
                 <img src={`img/${imagen}.png`} alt={nombre}/>
                 <p>{nombre} <span> $ {precio}</span></p>
-                <Link to={`/product/${id}`}>
+                <Link to={`/products/${id}`}>
                     Mas info
                 </Link>
             </li>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import ProductStyle from './ProductStyle.css'
+import ProductStyle from '../Products/ProductStyle.css'
 import PropTypes from "prop-types";
 import {Link} from 'react-router-dom'
 
